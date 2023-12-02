@@ -55,7 +55,7 @@ struct UserFirstSelectView: View {
                     .overlay(RoundedRectangle(cornerRadius: 20)
                         .stroke(Color("BalanceCatchBlue").opacity(1),lineWidth: 4))
                     .padding(.leading, 24)
-            }.padding(.bottom, 40) //HStack
+            }.padding(.bottom, 30) //HStack
             
             ZStack{
                 
@@ -132,10 +132,12 @@ struct UserFirstSelectView: View {
                     .disabled(!isActivated1 && !isActivated2)
                     .simultaneousGesture(TapGesture().onEnded{
                     })
+										.padding(.bottom)
             } else {
                 NavigationLink("Next", value: Route.timerView)
                     .buttonStyle(RoundedBlueButton())
                     .disabled(!isActivated1 && !isActivated2)
+										.padding(.bottom)
             }
         }
         .padding(.top,100)
@@ -151,5 +153,7 @@ struct UserFirstSelectView: View {
 struct UserFirstSelect_Previews: PreviewProvider {
     static var previews: some View {
         UserFirstSelectView(index: 0, path: Binding.constant([]))
+					.environmentObject(PlayerList())
+					.environmentObject(QuestionDataViewModel())
     }
 }
