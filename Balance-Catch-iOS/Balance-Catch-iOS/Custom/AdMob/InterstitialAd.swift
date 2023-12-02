@@ -10,7 +10,13 @@ import SwiftUI
 
 final class InterstitialAd: NSObject, GADFullScreenContentDelegate, ObservableObject {
     
+    //https://developers.google.com/admob/ios/test-ads?hl=ko#demo_ad_units 참고
+    #if DEBUG
+    private let appUnitId = "ca-app-pub-3940256099942544/5135589807"
+    #else
     private let appUnitId = "ca-app-pub-7789747740418821/9601686839"
+    #endif
+    
     var ad: GADInterstitialAd?
     @Published var isDismiss = false
     
